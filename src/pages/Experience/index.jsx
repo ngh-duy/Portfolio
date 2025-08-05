@@ -69,7 +69,7 @@ export default function Experience() {
             <Item icon={tailwindcssIcon} />
           </div>
           <div className="card3 h-35 mx-5 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
-            <RainComponent elements={createRainElements} />
+            {/* <RainComponent elements={createRainElements} /> */}
           </div>
         </div>
 
@@ -82,7 +82,7 @@ export default function Experience() {
             <Item icon={reactIcon} />
           </div>
           <div className="card3 h-35 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
-            <RainComponent elements={createRainElements} />
+            {/* <RainComponent elements={createRainElements} /> */}
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export default function Experience() {
             <Item icon={cssIcon} />
           </div>
           <div className="card3 h-35 mx-5 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
-            <RainComponent elements={createRainElements} />
+            {/* <RainComponent elements={createRainElements} /> */}
           </div>
         </div>
       </div>
