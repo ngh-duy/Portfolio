@@ -1,9 +1,10 @@
-.introduce .bg-image {
+.bg-image {
   background-image: url("../../assets/background.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .introduce .text-content {
   padding-left: 40px;
   color: white;
@@ -56,7 +57,7 @@
 }
 
 .experience {
-  padding: 50px 40px;
+  padding: 30px 40px;
 }
 .experience h2 {
   color: rgb(2, 124, 224);
