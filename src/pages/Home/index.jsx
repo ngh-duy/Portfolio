@@ -31,7 +31,7 @@ export default function Home() {
         "Scss",
       ],
       demoLink: "https://your-todo.vercel.app",
-      codeLink: "https://github.com/ngh-duy/sharing-link",
+      codeLink: "https://github.com/ngh-duy/Portfolio",
     },
   ];
 
