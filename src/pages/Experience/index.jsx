@@ -63,7 +63,7 @@ export default function Experience() {
           <div className="bg-[#1A2A80] h-24 absolute bottom-0 z-10 left-0 right-0 card1 flex justify-center items-center">
             <span>LIBRARY</span>
           </div>
-          <div className="h-58 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
+          <div className="h-35 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
             <Item icon={reduxIcon} />
             <Item icon={scssIcon} />
             <Item icon={tailwindcssIcon} />
