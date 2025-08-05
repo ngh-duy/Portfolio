@@ -78,7 +78,7 @@ export default function Experience() {
           <div className="bg-[#3B38A0] h-24 absolute bottom-0 z-10 left-0 right-0 card1 flex justify-center items-center">
             <span className="uppercase">framework</span>
           </div>
-          <div className="h-58 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
+          <div className="h-35 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
             <Item icon={reactIcon} />
           </div>
           <div className="card3 h-58 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
@@ -91,7 +91,7 @@ export default function Experience() {
           <div className="bg-[#7A85C1] h-24 absolute bottom-0 z-10 left-0 right-0 card1 flex justify-center items-center">
             <span>LANGUAGE</span>
           </div>
-          <div className="h-58 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
+          <div className="h-35 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
             <Item icon={javaScriptIcon} />
             <Item icon={html5Icon} />
             <Item icon={cssIcon} />

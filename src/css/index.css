@@ -6,7 +6,7 @@
 }
 
 .introduce .text-content {
-  padding-left: 40px;
+  padding-left: 30px;
   color: white;
   height: 100vh;
   align-content: center;
@@ -18,7 +18,7 @@
   margin-bottom: 20px;
 }
 .introduce .text-content .nav {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .introduce .text-content .nav span {
   color: rgb(2, 124, 224);
@@ -42,7 +42,7 @@
 }
 
 .about {
-  padding: 50px 40px;
+  padding: 30px 40px;
 }
 .about h2 {
   color: rgb(2, 124, 224);
