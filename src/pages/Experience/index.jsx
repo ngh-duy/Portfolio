@@ -20,23 +20,23 @@ export default function Experience() {
     cssIcon,
   ];
 
-  // Tối ưu: Tạo rain elements một lần duy nhất
-  // const createRainElements = useMemo(() => {
-  //   return Array.from({ length: 10 }).map((_, i) => {
-  //     const icon = rainIcons[Math.floor(Math.random() * rainIcons.length)];
-  //     const left = Math.random() * 100;
-  //     const duration = 3 + Math.random() * 2;
-  //     const delay = Math.random() * 3;
 
-  //     return {
-  //       id: i,
-  //       icon,
-  //       left,
-  //       duration,
-  //       delay
-  //     };
-  //   });
-  // }, []); // Empty dependency array - chỉ tạo một lần
+  const createRainElements = useMemo(() => {
+    return Array.from({ length: 10 }).map((_, i) => {
+      const icon = rainIcons[Math.floor(Math.random() * rainIcons.length)];
+      const left = Math.random() * 100;
+      const duration = 3 + Math.random() * 2;
+      const delay = Math.random() * 3;
+
+      return {
+        id: i,
+        icon,
+        left,
+        duration,
+        delay
+      };
+    });
+  }, []); // Empty dependency array - chỉ tạo một lần
 
   const RainComponent = ({ elements }) => (
     <>
@@ -68,8 +68,8 @@ export default function Experience() {
             <Item icon={scssIcon} />
             <Item icon={tailwindcssIcon} />
           </div>
-          <div className="card3 h-58 mx-5 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
-            {/* <RainComponent elements={createRainElements} /> */}
+          <div className="card3 h-35 mx-5 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
+            <RainComponent elements={createRainElements} />
           </div>
         </div>
 
@@ -81,8 +81,8 @@ export default function Experience() {
           <div className="h-35 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
             <Item icon={reactIcon} />
           </div>
-          <div className="card3 h-58 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
-            {/* <RainComponent elements={createRainElements} /> */}
+          <div className="card3 h-35 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
+            <RainComponent elements={createRainElements} />
           </div>
         </div>
 
@@ -96,8 +96,8 @@ export default function Experience() {
             <Item icon={html5Icon} />
             <Item icon={cssIcon} />
           </div>
-          <div className="card3 h-58 mx-5 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
-            {/* <RainComponent elements={createRainElements} /> */}
+          <div className="card3 h-35 mx-5 transform translate-y-18 absolute -z-10 inset-0 rounded-3xl overflow-hidden group-hover:hidden">
+            <RainComponent elements={createRainElements} />
           </div>
         </div>
       </div>

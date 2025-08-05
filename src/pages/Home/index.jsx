@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./index.scss";
 import Spline from "@splinetool/react-spline";
 import Experience from "../Experience";
@@ -10,6 +10,9 @@ import FadeInOnScroll from "../component/FadeInOnScroll";
 export default function Home() {
   const [splineLoaded, setSplineLoaded] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [renderSpline, setRenderSpline] = useState(false);
+
+  const robotRef = useRef(null);
 
   const projectList = [
     {
@@ -39,31 +42,44 @@ export default function Home() {
     },
   ];
 
-  // Handle Spline loading
+  // Spline loaded handler
   const handleSplineLoad = () => {
     setSplineLoaded(true);
-    // Delay showing other content after Spline loads
-    setTimeout(() => {
-      setShowContent(true);
-    }, 800); // Tăng delay lên 800ms để smooth hơn
+    setTimeout(() => setShowContent(true), 800);
   };
 
-  // Alternative: Auto show content after a timeout if Spline takes too long
+  // Fallback if Spline takes too long
   useEffect(() => {
-    const fallbackTimer = setTimeout(() => {
-      setShowContent(true);
-    }, 4000); // Tăng lên 4s để đợi Spline load
+    const timer = setTimeout(() => setShowContent(true), 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
-    return () => clearTimeout(fallbackTimer);
+  // IntersectionObserver để render Spline khi scroll tới robotRef
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRenderSpline(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (robotRef.current) {
+      observer.observe(robotRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
     <>
       {/* introduce */}
       <section className="introduce min-h-screen flex flex-col md:flex-row md:grid md:grid-cols-2 gap-4 items-center">
-        <div 
+        <div
           className={`text-content order-2 md:order-1 w-full transition-all duration-1000 ease-out ${
-            showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <h1 className="text-4xl md:text-6xl font-bold font-[Libertinus] mb-2">
@@ -96,8 +112,8 @@ export default function Home() {
             </a>
           </div>
           <div>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="text-white hover:cursor-pointer bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl hover:scale-105 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-6 py-3 text-center transition-all duration-300"
             >
               Link to CV
@@ -105,10 +121,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Robot - Responsive positioning */}
-        <div className="robot order-1 md:order-2 relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
-          {/* Loading spinner while Spline loads */}
-          {!splineLoaded && (
+        {/* Robot - Spline chỉ render khi scroll đến */}
+        <div
+          ref={robotRef}
+          className="robot order-1 md:order-2 relative w-full h-[400px] md:h-[500px] lg:h-[600px]"
+        >
+          {!splineLoaded && renderSpline && (
             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg">
               <div className="flex flex-col items-center">
                 <div className="animate-spin rounded-full h-16 w-16 md:h-20 md:w-20 border-4 border-purple-200 border-t-purple-500 mb-4"></div>
@@ -116,40 +134,45 @@ export default function Home() {
               </div>
             </div>
           )}
-          
-          <Spline 
-            scene="https://prod.spline.design/qVNs0lRbz-VZQMn6/scene.splinecode"
-            onLoad={handleSplineLoad}
-            className={`w-full h-full transition-all duration-1000 ${
-              splineLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-            }`}
-          />
-          
-          <button
-            className={`absolute bottom-4 right-4 md:bottom-5 md:right-5 text-sm md:text-base text-white rounded-2xl z-20 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-4 py-2 md:px-6 md:py-3 transition-all duration-1000 hover:scale-105 hover:shadow-xl ${
-              splineLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-            }`}
-            type="button"
-          >
-            Hi, I am developer.
-          </button>
+
+          {renderSpline && (
+            <Spline
+              scene="https://prod.spline.design/qVNs0lRbz-VZQMn6/scene.splinecode"
+              onLoad={handleSplineLoad}
+              className={`w-full h-full transition-all duration-1000 ${
+                splineLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+            />
+          )}
+
+          {renderSpline && (
+            <button
+              className={`absolute bottom-4 right-4 md:bottom-5 md:right-5 text-sm md:text-base text-white rounded-2xl z-20 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-4 py-2 md:px-6 md:py-3 transition-all duration-1000 hover:scale-105 hover:shadow-xl ${
+                splineLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+              }`}
+              type="button"
+            >
+              Hi, I am developer.
+            </button>
+          )}
         </div>
       </section>
 
+      {/* Background image */}
       <div className="bg-image fixed inset-0 -z-30"></div>
 
-      {/* Rest of content - Shows after Spline loads */}
-      <div 
+      {/* Content sau khi Spline đã render */}
+      <div
         className={`transition-all duration-1500 ease-out ${
-          showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        {/* about */}
+        {/* About section */}
         <FadeInOnScroll delay={showContent ? 0.2 : 999}>
-          <section id='about' className="about py-16 px-4">
+          <section id="about" className="about py-16 px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center my-8">About Me</h2>
             <p className="text-base md:text-lg text-center mx-auto max-w-2xl leading-relaxed">
-              I am a passionate Frontend Developer with a keen interest in
+               I am a passionate Frontend Developer with a keen interest in
               creating dynamic and responsive web applications. My journey in
               coding has equipped me with the skills to build user-friendly
               interfaces and enhance user experiences.
@@ -157,11 +180,12 @@ export default function Home() {
           </section>
         </FadeInOnScroll>
 
+        {/* Experience section */}
         <FadeInOnScroll delay={showContent ? 0.4 : 999}>
-          <section id='experience' className="experience py-16 px-4">
+          <section id="experience" className="experience py-16 px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center my-8">Experience</h2>
             <p className="text-base md:text-lg text-center mx-auto max-w-2xl mb-8 leading-relaxed">
-              I have worked on various projects that have honed my skills in HTML,
+               I have worked on various projects that have honed my skills in HTML,
               CSS, and JavaScript. My experience includes collaborating with teams
               to deliver high-quality web solutions.
             </p>
@@ -171,8 +195,9 @@ export default function Home() {
           </section>
         </FadeInOnScroll>
 
+        {/* Projects section */}
         <FadeInOnScroll delay={showContent ? 0.6 : 999}>
-          <section id='project' className="projects md:px-16 pb-6 px-4 text-white">
+          <section id="project" className="projects md:px-16 pb-6 px-4 text-white">
             <h2 className="text-[rgb(2,124,224)] title text-3xl md:text-4xl font-bold text-center my-8">
               Projects
             </h2>
@@ -180,15 +205,12 @@ export default function Home() {
               Here are some of the projects I've worked on recently, showcasing my
               frontend skills in React, TailwindCSS, and JavaScript.
             </p>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:px-4 px-2 justify-center">
               {projectList.map((project, index) => (
                 <div
                   key={index}
                   className="transform transition-all duration-500 hover:scale-105"
-                  style={{
-                    animationDelay: `${index * 0.2}s`
-                  }}
+                  style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <ProjectCard {...project} />
                 </div>
