@@ -1,0 +1,66 @@
+.skill {
+  .card {
+    position: relative; // cần thiết nếu .card2 dùng position: absolute
+
+    &:hover {
+      .card2 {
+        bottom: 90px;
+      }
+    }
+
+    .card2 {
+      position: absolute;
+      bottom: -180px; // ví dụ bắt đầu từ dưới
+      left: 0;
+      right: 0;
+      transition: bottom 0.4s ease-in-out;
+      .rain {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none; // để không cản trở hover
+        z-index: -10;
+
+        .drop {
+          position: absolute;
+          bottom: 100%;
+          width: 2px;
+          height: 15px;
+          background: rgba(255, 255, 255, 0.5);
+          animation: fall linear infinite;
+        }
+
+        // Tạo nhiều giọt mưa
+        @for $i from 1 through 30 {
+          .drop:nth-child(#{$i}) {
+            left: random(100) * 1%;
+            animation-duration: random(1000) + 1000ms;
+            animation-delay: random(2000) * 1ms;
+          }
+        }
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(220px);
+        }
+      }
+      @keyframes fallIcon {
+        0% {
+          top: -10%;
+          opacity: 0;
+          transform: scale(0.8) rotate(0deg);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          top: 110%;
+          opacity: 0;
+          transform: scale(1.2) rotate(360deg);
+        }
+      }
+    }
+  }
+}

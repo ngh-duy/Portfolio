@@ -1,0 +1,199 @@
+.skill .card {
+  position: relative;
+}
+.skill .card:hover .card2 {
+  bottom: 90px;
+}
+.skill .card .card2 {
+  position: absolute;
+  bottom: -180px;
+  left: 0;
+  right: 0;
+  transition: bottom 0.4s ease-in-out;
+}
+.skill .card .card2 .rain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -10;
+}
+.skill .card .card2 .rain .drop {
+  position: absolute;
+  bottom: 100%;
+  width: 2px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  animation: fall linear infinite;
+}
+.skill .card .card2 .rain .drop:nth-child(1) {
+  left: 94%;
+  animation-duration: 1828ms;
+  animation-delay: 1872ms;
+}
+.skill .card .card2 .rain .drop:nth-child(2) {
+  left: 6%;
+  animation-duration: 1771ms;
+  animation-delay: 1309ms;
+}
+.skill .card .card2 .rain .drop:nth-child(3) {
+  left: 48%;
+  animation-duration: 1575ms;
+  animation-delay: 396ms;
+}
+.skill .card .card2 .rain .drop:nth-child(4) {
+  left: 73%;
+  animation-duration: 1606ms;
+  animation-delay: 1523ms;
+}
+.skill .card .card2 .rain .drop:nth-child(5) {
+  left: 86%;
+  animation-duration: 1699ms;
+  animation-delay: 594ms;
+}
+.skill .card .card2 .rain .drop:nth-child(6) {
+  left: 35%;
+  animation-duration: 1812ms;
+  animation-delay: 811ms;
+}
+.skill .card .card2 .rain .drop:nth-child(7) {
+  left: 11%;
+  animation-duration: 1956ms;
+  animation-delay: 1688ms;
+}
+.skill .card .card2 .rain .drop:nth-child(8) {
+  left: 53%;
+  animation-duration: 1699ms;
+  animation-delay: 238ms;
+}
+.skill .card .card2 .rain .drop:nth-child(9) {
+  left: 24%;
+  animation-duration: 1870ms;
+  animation-delay: 962ms;
+}
+.skill .card .card2 .rain .drop:nth-child(10) {
+  left: 97%;
+  animation-duration: 1022ms;
+  animation-delay: 1588ms;
+}
+.skill .card .card2 .rain .drop:nth-child(11) {
+  left: 2%;
+  animation-duration: 1128ms;
+  animation-delay: 788ms;
+}
+.skill .card .card2 .rain .drop:nth-child(12) {
+  left: 28%;
+  animation-duration: 1851ms;
+  animation-delay: 1339ms;
+}
+.skill .card .card2 .rain .drop:nth-child(13) {
+  left: 74%;
+  animation-duration: 1115ms;
+  animation-delay: 1482ms;
+}
+.skill .card .card2 .rain .drop:nth-child(14) {
+  left: 80%;
+  animation-duration: 1716ms;
+  animation-delay: 1673ms;
+}
+.skill .card .card2 .rain .drop:nth-child(15) {
+  left: 41%;
+  animation-duration: 1268ms;
+  animation-delay: 1394ms;
+}
+.skill .card .card2 .rain .drop:nth-child(16) {
+  left: 25%;
+  animation-duration: 1588ms;
+  animation-delay: 1069ms;
+}
+.skill .card .card2 .rain .drop:nth-child(17) {
+  left: 99%;
+  animation-duration: 1906ms;
+  animation-delay: 88ms;
+}
+.skill .card .card2 .rain .drop:nth-child(18) {
+  left: 90%;
+  animation-duration: 1023ms;
+  animation-delay: 965ms;
+}
+.skill .card .card2 .rain .drop:nth-child(19) {
+  left: 6%;
+  animation-duration: 1524ms;
+  animation-delay: 1946ms;
+}
+.skill .card .card2 .rain .drop:nth-child(20) {
+  left: 66%;
+  animation-duration: 1365ms;
+  animation-delay: 206ms;
+}
+.skill .card .card2 .rain .drop:nth-child(21) {
+  left: 41%;
+  animation-duration: 1992ms;
+  animation-delay: 1543ms;
+}
+.skill .card .card2 .rain .drop:nth-child(22) {
+  left: 66%;
+  animation-duration: 1457ms;
+  animation-delay: 341ms;
+}
+.skill .card .card2 .rain .drop:nth-child(23) {
+  left: 48%;
+  animation-duration: 1752ms;
+  animation-delay: 684ms;
+}
+.skill .card .card2 .rain .drop:nth-child(24) {
+  left: 49%;
+  animation-duration: 1239ms;
+  animation-delay: 1926ms;
+}
+.skill .card .card2 .rain .drop:nth-child(25) {
+  left: 50%;
+  animation-duration: 1763ms;
+  animation-delay: 185ms;
+}
+.skill .card .card2 .rain .drop:nth-child(26) {
+  left: 65%;
+  animation-duration: 1239ms;
+  animation-delay: 518ms;
+}
+.skill .card .card2 .rain .drop:nth-child(27) {
+  left: 8%;
+  animation-duration: 1955ms;
+  animation-delay: 566ms;
+}
+.skill .card .card2 .rain .drop:nth-child(28) {
+  left: 14%;
+  animation-duration: 1463ms;
+  animation-delay: 868ms;
+}
+.skill .card .card2 .rain .drop:nth-child(29) {
+  left: 4%;
+  animation-duration: 1862ms;
+  animation-delay: 1517ms;
+}
+.skill .card .card2 .rain .drop:nth-child(30) {
+  left: 26%;
+  animation-duration: 1374ms;
+  animation-delay: 893ms;
+}
+@keyframes fall {
+  to {
+    transform: translateY(220px);
+  }
+}
+@keyframes fallIcon {
+  0% {
+    top: -10%;
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+    transform: scale(1.2) rotate(360deg);
+  }
+}/*# sourceMappingURL=experience.css.map */
