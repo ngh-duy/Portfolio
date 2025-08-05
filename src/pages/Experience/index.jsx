@@ -61,7 +61,7 @@ export default function Experience() {
         {/* LIBRARY Card */}
         <div className="card relative overflow-hidden h-100 rounded-lg">
           <div className="bg-[#1A2A80] h-24 absolute bottom-0 z-10 left-0 right-0 card1 flex justify-center items-center">
-            <span>LIBRARY</span>
+            <span className="uppercase text-xl font-bold">LIBRARY</span>
           </div>
           <div className="h-35 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
             <Item icon={reduxIcon} />
@@ -76,7 +76,7 @@ export default function Experience() {
         {/* FRAMEWORK Card */}
         <div className="card relative overflow-hidden h-100 rounded-lg">
           <div className="bg-[#3B38A0] h-24 absolute bottom-0 z-10 left-0 right-0 card1 flex justify-center items-center">
-            <span className="uppercase">framework</span>
+            <span className="uppercase text-xl font-bold">framework</span>
           </div>
           <div className="h-35 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
             <Item icon={reactIcon} />
@@ -89,7 +89,7 @@ export default function Experience() {
         {/* LANGUAGE Card */}
         <div className="card relative overflow-hidden h-100 rounded-lg">
           <div className="bg-[#7A85C1] h-24 absolute bottom-0 z-10 left-0 right-0 card1 flex justify-center items-center">
-            <span>LANGUAGE</span>
+            <span className="text-xl font-bold">LANGUAGE</span>
           </div>
           <div className="h-35 mx-5 grid grid-cols-3 absolute z-0 left-4 right-4 rounded-3xl card2">
             <Item icon={javaScriptIcon} />
