@@ -122,7 +122,7 @@ export default function Home() {
         </div>
 
         {/* Robot - Spline chỉ render khi scroll đến */}
-        <div
+        {/* <div
           ref={robotRef}
           className="robot order-1 md:order-2 relative w-full h-[400px] md:h-[500px] lg:h-[600px]"
         >
@@ -155,7 +155,7 @@ export default function Home() {
               Hi, I am developer.
             </button>
           )}
-        </div>
+        </div> */}
       </section>
 
       {/* Background image */}
